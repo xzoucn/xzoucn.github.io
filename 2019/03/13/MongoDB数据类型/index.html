@@ -98,23 +98,25 @@
 
 
 
-  <meta name="description" content="软件技术小站">
-<meta property="og:type" content="website">
-<meta property="og:title" content="ConstZ">
-<meta property="og:url" content="https://xzoucn.github.io/archives/2019/index.html">
+  <meta name="description" content="MongoDB通过BSON（Binary JSON）来描述和存放数据。BSON是一种可进行二进制序列化的，类JSON格式的文档对象。通过BSON，MongoDB可以方便地存储无模式（scheme）数据。|类型|编号|别名|说明|| —— | —— | —— |——||Double|    1|    “double”|||String|    2|    “string”|||Object|">
+<meta name="keywords" content="MongoDB">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MongoDB数据类型">
+<meta property="og:url" content="https://xzoucn.github.io/2019/03/13/MongoDB数据类型/index.html">
 <meta property="og:site_name" content="ConstZ">
-<meta property="og:description" content="软件技术小站">
+<meta property="og:description" content="MongoDB通过BSON（Binary JSON）来描述和存放数据。BSON是一种可进行二进制序列化的，类JSON格式的文档对象。通过BSON，MongoDB可以方便地存储无模式（scheme）数据。|类型|编号|别名|说明|| —— | —— | —— |——||Double|    1|    “double”|||String|    2|    “string”|||Object|">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-03-13T09:47:21.424Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="ConstZ">
-<meta name="twitter:description" content="软件技术小站">
+<meta name="twitter:title" content="MongoDB数据类型">
+<meta name="twitter:description" content="MongoDB通过BSON（Binary JSON）来描述和存放数据。BSON是一种可进行二进制序列化的，类JSON格式的文档对象。通过BSON，MongoDB可以方便地存储无模式（scheme）数据。|类型|编号|别名|说明|| —— | —— | —— |——||Double|    1|    “double”|||String|    2|    “string”|||Object|">
 
 
 
 
 
 
-  <link rel="canonical" href="https://xzoucn.github.io/archives/2019/">
+  <link rel="canonical" href="https://xzoucn.github.io/2019/03/13/MongoDB数据类型/">
 
 
 
@@ -124,7 +126,7 @@
   };
 </script>
 
-  <title>归档 | ConstZ</title>
+  <title>MongoDB数据类型 | ConstZ</title>
   
 
 
@@ -172,7 +174,7 @@
     
   
 
-  <div class="container sidebar-position-left page-archive">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -282,7 +284,7 @@
         
         
           
-          <li class="menu-item menu-item-archives menu-item-active">
+          <li class="menu-item menu-item-archives">
 
     
     
@@ -355,37 +357,6 @@
   
     
 
-    
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-    
-
-  
-
-
   
 
   
@@ -410,397 +381,205 @@
           <div id="content" class="content">
             
 
-  
-  
-  
-  <div class="post-block archive">
-    <div id="posts" class="posts-collapse">
-      <span class="archive-move-on"></span>
+  <div id="posts" class="posts-expand">
+    
 
-      
-      <span class="archive-page-counter">
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://xzoucn.github.io/2019/03/13/MongoDB数据类型/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Shawn Zou">
+      <meta itemprop="description" content="软件技术小站">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ConstZ">
+    </span>
+
+    
+      <header class="post-header">
+
         
         
+          <h1 class="post-title" itemprop="name headline">MongoDB数据类型
+
+              
+            
+          </h1>
         
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-03-13 17:46:35 / 修改时间：17:47:21" itemprop="dateCreated datePublished" datetime="2019-03-13T17:46:35+08:00">2019-03-13</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
           
-        
-        嗯..! 目前共计 12 篇日志。 继续努力。
-      </span>
-      
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/数据库/" itemprop="url" rel="index"><span itemprop="name">数据库</span></a></span>
 
-      
-
-        
-        
-        
-
-        
+                
+                
+              
+            </span>
           
-          <div class="collection-title">
-            <h1 class="archive-year" id="archive-year-2019">2019</h1>
-          </div>
-        
-        
 
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-          <a class="post-title-link" href="/2019/03/13/MongoDB数据类型/" itemprop="url">
+          
             
-              <span itemprop="name">MongoDB数据类型</span>
             
-          </a>
-        
-      </h2>
+          
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-03-13T17:46:35+08:00" content="2019-03-13">
-          03-13
-        </time>
-      </div>
+          
+          
 
-    </header>
-  </article>
+          
 
+          
 
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-          <a class="post-title-link" href="/2019/03/13/MongoDB基本操作-Mongo-Shell/" itemprop="url">
-            
-              <span itemprop="name">MongoDB基本操作 - Mongo Shell</span>
-            
-          </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-03-13T17:42:07+08:00" content="2019-03-13">
-          03-13
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
       
 
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-          <a class="post-title-link" href="/2019/03/13/货币战争/" itemprop="url">
-            
-              <span itemprop="name">货币战争</span>
-            
-          </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-03-13T17:39:06+08:00" content="2019-03-13">
-          03-13
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
+      
+        <p>MongoDB通过BSON（Binary JSON）来描述和存放数据。BSON是一种可进行二进制序列化的，类JSON格式的文档对象。通过BSON，MongoDB可以方便地存储无模式（scheme）数据。<br>|类型|编号|别名|说明|<br>| —— | —— | —— |——|<br>|Double|    1|    “double”||<br>|String|    2|    “string”||<br>|Object|    3|    “object”||<br>|Array|    4|    “array”||<br>|Binary data|    5|    “binData”||<br>|Undefined|    6|    “undefined”|    Deprecated.|<br>|ObjectId|    7|    “objectId”||<br>|Boolean|    8|    “bool”||<br>|Date|    9|    “date”||<br>|Null|    10|    “null”||<br>|Regular Expression|    11|    “regex”||<br>|DBPointer|    12|    “dbPointer”|    Deprecated.|<br>|JavaScript|    13|    “javascript”||<br>|Symbol|    14|    “symbol”|    Deprecated.|<br>|JavaScript (with scope)|    15|    “javascriptWithScope”||<br>|32-bit integer|    16|    “int”||<br>|Timestamp|    17|    “timestamp”||<br>|64-bit integer|    18|    “long”||<br>|Decimal128|    19|    “decimal”|    New in version 3.4.|<br>|Min key|    -1|    “minKey”||<br>|Max key|    127|    “maxKey”||</p>
+<h6 id="ObjectId"><a href="#ObjectId" class="headerlink" title="ObjectId"></a>ObjectId</h6><p>具有12字节的唯一标识。MongoDB中，每条记录都有一个类似关系型数据库主键标识的_id字段来标识此条记录，如果没有设定文档记录的_id值，则通过ObjectId来生成_id。其具体组成如下：</p>
+<ul>
+<li>4字节，Unix的时间戳</li>
+<li>5字节，随机数值</li>
+<li>3字节，计数器，从随机的起始值开始</li>
+</ul>
+<h6 id="String"><a href="#String" class="headerlink" title="String"></a>String</h6><p>BSON的字符串编码为UTF-8，UTF-8可以更好地支持各种语言文字，一般每种编程语言的MongoDB驱动会帮助处理字符串编码以符合要求。</p>
+<h6 id="Timestamps"><a href="#Timestamps" class="headerlink" title="Timestamps"></a>Timestamps</h6><p>BSON中的时间戳比较特别，他并不能直接对应到Date类型，而是通过如下方式组织64位数据：</p>
+<ul>
+<li>前32位是从Unix纪元（1970.1.1）开始计算到现在时间的秒数</li>
+<li>后32位是一秒内的操作序数<br>在一个单实例MongoDB中，时间戳是唯一的。如果对一个一级timestamp类型字段插入了空值，MongoDB会将空值替换成当前时间戳（从2.6版开始，之前的版本只会替换前两个字段）。</li>
+</ul>
+<h6 id="Date"><a href="#Date" class="headerlink" title="Date"></a>Date</h6><p>BSON日期是一个64位的字段类型，存放了从Unix纪元（1970.1.1）开始计算的毫秒数计数时间。BSON日期是有符号类型的，负值代表1970.1.1之前的时间。</p>
 
       
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-          <a class="post-title-link" href="/2019/03/13/凤凰项目笔记/" itemprop="url">
-            
-              <span itemprop="name">凤凰项目笔记</span>
-            
-          </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-03-13T17:37:53+08:00" content="2019-03-13">
-          03-13
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-          <a class="post-title-link" href="/2019/03/13/批量修改文件名/" itemprop="url">
-            
-              <span itemprop="name">批量修改文件名</span>
-            
-          </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-03-13T17:35:33+08:00" content="2019-03-13">
-          03-13
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-          <a class="post-title-link" href="/2019/03/13/CSS透明度设置/" itemprop="url">
-            
-              <span itemprop="name">CSS透明度设置</span>
-            
-          </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-03-13T17:31:30+08:00" content="2019-03-13">
-          03-13
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-          <a class="post-title-link" href="/2019/03/13/collate的用处/" itemprop="url">
-            
-              <span itemprop="name">collate的用处</span>
-            
-          </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-03-13T10:08:42+08:00" content="2019-03-13">
-          03-13
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-          <a class="post-title-link" href="/2019/03/13/N在SQL中的用处/" itemprop="url">
-            
-              <span itemprop="name">N在SQL中的用处</span>
-            
-          </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-03-13T10:07:53+08:00" content="2019-03-13">
-          03-13
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-          <a class="post-title-link" href="/2019/03/13/PHP-学习手记-变量和常量/" itemprop="url">
-            
-              <span itemprop="name">PHP 学习手记 - 变量和常量</span>
-            
-          </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-03-13T10:06:50+08:00" content="2019-03-13">
-          03-13
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-          <a class="post-title-link" href="/2019/03/13/PHP-学习手记-字符串/" itemprop="url">
-            
-              <span itemprop="name">PHP 学习手记 - 字符串</span>
-            
-          </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-03-13T10:05:54+08:00" content="2019-03-13">
-          03-13
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
     </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/MongoDB/" rel="tag"># MongoDB</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/03/13/MongoDB基本操作-Mongo-Shell/" rel="next" title="MongoDB基本操作 - Mongo Shell">
+                <i class="fa fa-chevron-left"></i> MongoDB基本操作 - Mongo Shell
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
-
-  
-  <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/archives/2019/page/2/">2</a><a class="extend next" rel="next" href="/archives/2019/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
-  </nav>
+  </article>
 
 
+  </div>
 
 
           </div>
           
+
+  
+
+
 
         </div>
         
@@ -820,8 +599,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <div class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -925,6 +713,23 @@
         </div>
       </div>
 
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-6"><a class="nav-link" href="#ObjectId"><span class="nav-number">1.</span> <span class="nav-text">ObjectId</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#String"><span class="nav-number">2.</span> <span class="nav-text">String</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#Timestamps"><span class="nav-number">3.</span> <span class="nav-text">Timestamps</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#Date"><span class="nav-number">4.</span> <span class="nav-text">Date</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
       
 
       
@@ -1053,6 +858,10 @@
 
 
   
+  <script src="/js/src/scrollspy.js?v=7.0.1"></script>
+<script src="/js/src/post-details.js?v=7.0.1"></script>
+
+
 
   
 
@@ -1068,6 +877,8 @@
 
   
 
+
+  
 
 
   

@@ -396,6 +396,1037 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://xzoucn.github.io/2019/03/13/MongoDB数据类型/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Shawn Zou">
+      <meta itemprop="description" content="软件技术小站">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ConstZ">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/03/13/MongoDB数据类型/" class="post-title-link" itemprop="url">MongoDB数据类型</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-03-13 17:46:35 / 修改时间：17:47:21" itemprop="dateCreated datePublished" datetime="2019-03-13T17:46:35+08:00">2019-03-13</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/数据库/" itemprop="url" rel="index"><span itemprop="name">数据库</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>MongoDB通过BSON（Binary JSON）来描述和存放数据。BSON是一种可进行二进制序列化的，类JSON格式的文档对象。通过BSON，MongoDB可以方便地存储无模式（scheme）数据。<br>|类型|编号|别名|说明|<br>| —— | —— | —— |——|<br>|Double|    1|    “double”||<br>|String|    2|    “string”||<br>|Object|    3|    “object”||<br>|Array|    4|    “array”||<br>|Binary data|    5|    “binData”||<br>|Undefined|    6|    “undefined”|    Deprecated.|<br>|ObjectId|    7|    “objectId”||<br>|Boolean|    8|    “bool”||<br>|Date|    9|    “date”||<br>|Null|    10|    “null”||<br>|Regular Expression|    11|    “regex”||<br>|DBPointer|    12|    “dbPointer”|    Deprecated.|<br>|JavaScript|    13|    “javascript”||<br>|Symbol|    14|    “symbol”|    Deprecated.|<br>|JavaScript (with scope)|    15|    “javascriptWithScope”||<br>|32-bit integer|    16|    “int”||<br>|Timestamp|    17|    “timestamp”||<br>|64-bit integer|    18|    “long”||<br>|Decimal128|    19|    “decimal”|    New in version 3.4.|<br>|Min key|    -1|    “minKey”||<br>|Max key|    127|    “maxKey”||</p>
+<h6 id="ObjectId"><a href="#ObjectId" class="headerlink" title="ObjectId"></a>ObjectId</h6><p>具有12字节的唯一标识。MongoDB中，每条记录都有一个类似关系型数据库主键标识的_id字段来标识此条记录，如果没有设定文档记录的_id值，则通过ObjectId来生成_id。其具体组成如下：</p>
+<ul>
+<li>4字节，Unix的时间戳</li>
+<li>5字节，随机数值</li>
+<li>3字节，计数器，从随机的起始值开始</li>
+</ul>
+<h6 id="String"><a href="#String" class="headerlink" title="String"></a>String</h6><p>BSON的字符串编码为UTF-8，UTF-8可以更好地支持各种语言文字，一般每种编程语言的MongoDB驱动会帮助处理字符串编码以符合要求。</p>
+<h6 id="Timestamps"><a href="#Timestamps" class="headerlink" title="Timestamps"></a>Timestamps</h6><p>BSON中的时间戳比较特别，他并不能直接对应到Date类型，而是通过如下方式组织64位数据：</p>
+<ul>
+<li>前32位是从Unix纪元（1970.1.1）开始计算到现在时间的秒数</li>
+<li>后32位是一秒内的操作序数<br>在一个单实例MongoDB中，时间戳是唯一的。如果对一个一级timestamp类型字段插入了空值，MongoDB会将空值替换成当前时间戳（从2.6版开始，之前的版本只会替换前两个字段）。</li>
+</ul>
+<h6 id="Date"><a href="#Date" class="headerlink" title="Date"></a>Date</h6><p>BSON日期是一个64位的字段类型，存放了从Unix纪元（1970.1.1）开始计算的毫秒数计数时间。BSON日期是有符号类型的，负值代表1970.1.1之前的时间。</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://xzoucn.github.io/2019/03/13/MongoDB基本操作-Mongo-Shell/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Shawn Zou">
+      <meta itemprop="description" content="软件技术小站">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ConstZ">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/03/13/MongoDB基本操作-Mongo-Shell/" class="post-title-link" itemprop="url">MongoDB基本操作 - Mongo Shell</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-03-13 17:42:07 / 修改时间：17:43:03" itemprop="dateCreated datePublished" datetime="2019-03-13T17:42:07+08:00">2019-03-13</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/数据库/" itemprop="url" rel="index"><span itemprop="name">数据库</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>Mongo Shell提供了交互式的MongoDB操作体验，通过Mongo Shell我们可以方便地进行查询验证及学习。本篇我们将通过Mongo Shell来进行MongoDB基本操作介绍。</p>
+<h6 id="文档插入"><a href="#文档插入" class="headerlink" title="文档插入"></a>文档插入</h6><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">db.inventory.insertOne(</span><br><span class="line">   &#123; <span class="attr">item</span>: <span class="string">"canvas"</span>, <span class="attr">qty</span>: <span class="number">100</span>, <span class="attr">tags</span>: [<span class="string">"cotton"</span>], <span class="attr">size</span>: &#123; <span class="attr">h</span>: <span class="number">28</span>, <span class="attr">w</span>: <span class="number">35.5</span>, <span class="attr">uom</span>: <span class="string">"cm"</span> &#125; &#125;</span><br><span class="line">) <span class="comment">// 单条插入</span></span><br><span class="line">db.inventory.insertMany([</span><br><span class="line">   &#123; <span class="attr">item</span>: <span class="string">"journal"</span>, <span class="attr">qty</span>: <span class="number">25</span>, <span class="attr">tags</span>: [<span class="string">"blank"</span>, <span class="string">"red"</span>], <span class="attr">size</span>: &#123; <span class="attr">h</span>: <span class="number">14</span>, <span class="attr">w</span>: <span class="number">21</span>, <span class="attr">uom</span>: <span class="string">"cm"</span> &#125; &#125;,</span><br><span class="line">   &#123; <span class="attr">item</span>: <span class="string">"mat"</span>, <span class="attr">qty</span>: <span class="number">85</span>, <span class="attr">tags</span>: [<span class="string">"gray"</span>], <span class="attr">size</span>: &#123; <span class="attr">h</span>: <span class="number">27.9</span>, <span class="attr">w</span>: <span class="number">35.5</span>, <span class="attr">uom</span>: <span class="string">"cm"</span> &#125; &#125;,</span><br><span class="line">   &#123; <span class="attr">item</span>: <span class="string">"mousepad"</span>, <span class="attr">qty</span>: <span class="number">25</span>, <span class="attr">tags</span>: [<span class="string">"gel"</span>, <span class="string">"blue"</span>], <span class="attr">size</span>: &#123; <span class="attr">h</span>: <span class="number">19</span>, <span class="attr">w</span>: <span class="number">22.85</span>, <span class="attr">uom</span>: <span class="string">"cm"</span> &#125; &#125;</span><br><span class="line">]) <span class="comment">//多条插入</span></span><br></pre></td></tr></table></figure>
+<h6 id="文档查询-基础"><a href="#文档查询-基础" class="headerlink" title="文档查询 - 基础"></a>文档查询 - 基础</h6><p>初始化查询记录<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"> db.inventory.insertMany([</span><br><span class="line">   &#123; <span class="attr">item</span>: <span class="string">"journal"</span>, <span class="attr">qty</span>: <span class="number">25</span>, <span class="attr">size</span>: &#123; <span class="attr">h</span>: <span class="number">14</span>, <span class="attr">w</span>: <span class="number">21</span>, <span class="attr">uom</span>: <span class="string">"cm"</span> &#125;, <span class="attr">status</span>: <span class="string">"A"</span> &#125;,</span><br><span class="line">   &#123; <span class="attr">item</span>: <span class="string">"notebook"</span>, <span class="attr">qty</span>: <span class="number">50</span>, <span class="attr">size</span>: &#123; <span class="attr">h</span>: <span class="number">8.5</span>, <span class="attr">w</span>: <span class="number">11</span>, <span class="attr">uom</span>: <span class="string">"in"</span> &#125;, <span class="attr">status</span>: <span class="string">"A"</span> &#125;,</span><br><span class="line">   &#123; <span class="attr">item</span>: <span class="string">"paper"</span>, <span class="attr">qty</span>: <span class="number">100</span>, <span class="attr">size</span>: &#123; <span class="attr">h</span>: <span class="number">8.5</span>, <span class="attr">w</span>: <span class="number">11</span>, <span class="attr">uom</span>: <span class="string">"in"</span> &#125;, <span class="attr">status</span>: <span class="string">"D"</span> &#125;,</span><br><span class="line">   &#123; <span class="attr">item</span>: <span class="string">"planner"</span>, <span class="attr">qty</span>: <span class="number">75</span>, <span class="attr">size</span>: &#123; <span class="attr">h</span>: <span class="number">22.85</span>, <span class="attr">w</span>: <span class="number">30</span>, <span class="attr">uom</span>: <span class="string">"cm"</span> &#125;, <span class="attr">status</span>: <span class="string">"D"</span> &#125;,</span><br><span class="line">   &#123; <span class="attr">item</span>: <span class="string">"postcard"</span>, <span class="attr">qty</span>: <span class="number">45</span>, <span class="attr">size</span>: &#123; <span class="attr">h</span>: <span class="number">10</span>, <span class="attr">w</span>: <span class="number">15.25</span>, <span class="attr">uom</span>: <span class="string">"cm"</span> &#125;, <span class="attr">status</span>: <span class="string">"A"</span> &#125;</span><br><span class="line">]);</span><br></pre></td></tr></table></figure></p>
+<p>查询语句<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">db.inventory.find( &#123;&#125; ) <span class="comment">//所有记录</span></span><br><span class="line">db.inventory.find( &#123; <span class="attr">status</span>: <span class="string">"D"</span> &#125; ) <span class="comment">//status是“D”的记录</span></span><br><span class="line">db.inventory.find( &#123; <span class="attr">status</span>: &#123; <span class="attr">$in</span>: [ <span class="string">"A"</span>, <span class="string">"D"</span> ] &#125; &#125; ) <span class="comment">//status是“A”或“D”的记录</span></span><br><span class="line">db.inventory.find( &#123; <span class="attr">status</span>: <span class="string">"A"</span>, <span class="attr">qty</span>: &#123; <span class="attr">$lt</span>: <span class="number">30</span> &#125; &#125; ) <span class="comment">//status是“A”并且qty小于30的记录</span></span><br><span class="line">db.inventory.find( &#123; <span class="attr">$or</span>: [ &#123; <span class="attr">status</span>: <span class="string">"A"</span> &#125;, &#123; <span class="attr">qty</span>: &#123; <span class="attr">$lt</span>: <span class="number">30</span> &#125; &#125; ] &#125; ) <span class="comment">//status是“A”或者qty小于30的记录</span></span><br><span class="line">db.inventory.find( &#123;</span><br><span class="line">     status: <span class="string">"A"</span>,</span><br><span class="line">     $or: [ &#123; <span class="attr">qty</span>: &#123; <span class="attr">$lt</span>: <span class="number">30</span> &#125; &#125;, &#123; <span class="attr">item</span>: <span class="regexp">/^p/</span> &#125; ]</span><br><span class="line">&#125; ) <span class="comment">//status是“A”，并且qty小于30或item以p开头</span></span><br><span class="line">db.inventory.find( &#123; <span class="string">"size.h"</span>: &#123; <span class="attr">$lt</span>: <span class="number">15</span> &#125;, <span class="string">"size.uom"</span>: <span class="string">"in"</span>, <span class="attr">status</span>: <span class="string">"D"</span> &#125; ) <span class="comment">//size.h小于15，size.uom是“in”并且status是“D”</span></span><br></pre></td></tr></table></figure></p>
+<h6 id="文档查询-数组"><a href="#文档查询-数组" class="headerlink" title="文档查询 - 数组"></a>文档查询 - 数组</h6><p>初始化查询记录<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">db.inventory.insertMany([</span><br><span class="line">   &#123; <span class="attr">item</span>: <span class="string">"journal"</span>, <span class="attr">qty</span>: <span class="number">25</span>, <span class="attr">tags</span>: [<span class="string">"blank"</span>, <span class="string">"red"</span>], <span class="attr">dim_cm</span>: [ <span class="number">14</span>, <span class="number">21</span> ] &#125;,</span><br><span class="line">   &#123; <span class="attr">item</span>: <span class="string">"notebook"</span>, <span class="attr">qty</span>: <span class="number">50</span>, <span class="attr">tags</span>: [<span class="string">"red"</span>, <span class="string">"blank"</span>], <span class="attr">dim_cm</span>: [ <span class="number">14</span>, <span class="number">21</span> ] &#125;,</span><br><span class="line">   &#123; <span class="attr">item</span>: <span class="string">"paper"</span>, <span class="attr">qty</span>: <span class="number">100</span>, <span class="attr">tags</span>: [<span class="string">"red"</span>, <span class="string">"blank"</span>, <span class="string">"plain"</span>], <span class="attr">dim_cm</span>: [ <span class="number">14</span>, <span class="number">21</span> ] &#125;,</span><br><span class="line">   &#123; <span class="attr">item</span>: <span class="string">"planner"</span>, <span class="attr">qty</span>: <span class="number">75</span>, <span class="attr">tags</span>: [<span class="string">"blank"</span>, <span class="string">"red"</span>], <span class="attr">dim_cm</span>: [ <span class="number">22.85</span>, <span class="number">30</span> ] &#125;,</span><br><span class="line">   &#123; <span class="attr">item</span>: <span class="string">"postcard"</span>, <span class="attr">qty</span>: <span class="number">45</span>, <span class="attr">tags</span>: [<span class="string">"blue"</span>], <span class="attr">dim_cm</span>: [ <span class="number">10</span>, <span class="number">15.25</span> ] &#125;</span><br><span class="line">]);</span><br></pre></td></tr></table></figure></p>
+<p>查询语句<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">db.inventory.find( &#123; <span class="attr">tags</span>: [<span class="string">"red"</span>, <span class="string">"blank"</span>] &#125; ) <span class="comment">//tags数组为 ["red", "blank"] 的记录</span></span><br><span class="line">db.inventory.find( &#123; <span class="attr">tags</span>: &#123; <span class="attr">$all</span>: [<span class="string">"red"</span>, <span class="string">"blank"</span>] &#125; &#125; ) <span class="comment">//tags数组包含“red”和“blank”的记录</span></span><br><span class="line">db.inventory.find( &#123; <span class="attr">tags</span>: <span class="string">"red"</span> &#125; ) <span class="comment">//tags包含“red”的记录</span></span><br><span class="line">db.inventory.find( &#123; <span class="attr">dim_cm</span>: &#123; <span class="attr">$gt</span>: <span class="number">25</span> &#125; &#125; ) <span class="comment">//dim_cm包含大于25的元素的记录</span></span><br><span class="line">db.inventory.find( &#123; <span class="attr">dim_cm</span>: &#123; <span class="attr">$gt</span>: <span class="number">15</span>, <span class="attr">$lt</span>: <span class="number">20</span> &#125; &#125; ) <span class="comment">//dim_cm包含大于15的元素，并且包含小于20的元素的记录</span></span><br><span class="line">db.inventory.find( &#123; <span class="attr">dim_cm</span>: &#123; <span class="attr">$elemMatch</span>: &#123; <span class="attr">$gt</span>: <span class="number">22</span>, <span class="attr">$lt</span>: <span class="number">30</span> &#125; &#125; &#125; ) <span class="comment">//dim_cm包含大于22同时小于30的元素的记录</span></span><br><span class="line">db.inventory.find( &#123; <span class="string">"dim_cm.1"</span>: &#123; <span class="attr">$gt</span>: <span class="number">25</span> &#125; &#125; ) <span class="comment">//dim_cm第二个元素大于25的记录</span></span><br><span class="line">db.inventory.find( &#123; <span class="string">"tags"</span>: &#123; <span class="attr">$size</span>: <span class="number">3</span> &#125; &#125; ) <span class="comment">//tags有三个元素的记录</span></span><br></pre></td></tr></table></figure></p>
+<h6 id="文档查询-文档元素数组"><a href="#文档查询-文档元素数组" class="headerlink" title="文档查询 - 文档元素数组"></a>文档查询 - 文档元素数组</h6><p>初始化查询记录<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">db.inventory.insertMany( [</span><br><span class="line">   &#123; <span class="attr">item</span>: <span class="string">"journal"</span>, <span class="attr">instock</span>: [ &#123; <span class="attr">warehouse</span>: <span class="string">"A"</span>, <span class="attr">qty</span>: <span class="number">5</span> &#125;, &#123; <span class="attr">warehouse</span>: <span class="string">"C"</span>, <span class="attr">qty</span>: <span class="number">15</span> &#125; ] &#125;,</span><br><span class="line">   &#123; <span class="attr">item</span>: <span class="string">"notebook"</span>, <span class="attr">instock</span>: [ &#123; <span class="attr">warehouse</span>: <span class="string">"C"</span>, <span class="attr">qty</span>: <span class="number">5</span> &#125; ] &#125;,</span><br><span class="line">   &#123; <span class="attr">item</span>: <span class="string">"paper"</span>, <span class="attr">instock</span>: [ &#123; <span class="attr">warehouse</span>: <span class="string">"A"</span>, <span class="attr">qty</span>: <span class="number">60</span> &#125;, &#123; <span class="attr">warehouse</span>: <span class="string">"B"</span>, <span class="attr">qty</span>: <span class="number">15</span> &#125; ] &#125;,</span><br><span class="line">   &#123; <span class="attr">item</span>: <span class="string">"planner"</span>, <span class="attr">instock</span>: [ &#123; <span class="attr">warehouse</span>: <span class="string">"A"</span>, <span class="attr">qty</span>: <span class="number">40</span> &#125;, &#123; <span class="attr">warehouse</span>: <span class="string">"B"</span>, <span class="attr">qty</span>: <span class="number">5</span> &#125; ] &#125;,</span><br><span class="line">   &#123; <span class="attr">item</span>: <span class="string">"postcard"</span>, <span class="attr">instock</span>: [ &#123; <span class="attr">warehouse</span>: <span class="string">"B"</span>, <span class="attr">qty</span>: <span class="number">15</span> &#125;, &#123; <span class="attr">warehouse</span>: <span class="string">"C"</span>, <span class="attr">qty</span>: <span class="number">35</span> &#125; ] &#125;</span><br><span class="line">]);</span><br></pre></td></tr></table></figure></p>
+<p>查询语句<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">db.inventory.find( &#123; <span class="string">"instock"</span>: &#123; <span class="attr">warehouse</span>: <span class="string">"A"</span>, <span class="attr">qty</span>: <span class="number">5</span> &#125; &#125; ) <span class="comment">//instock中包含元素为 &#123; warehouse: "A", qty: 5 &#125;并且顺序相同的记录</span></span><br><span class="line">db.inventory.find( &#123; <span class="string">"instock"</span>: &#123; <span class="attr">qty</span>: <span class="number">5</span>, <span class="attr">warehouse</span>: <span class="string">"A"</span> &#125; &#125; ) <span class="comment">//顺序不相同，不能查询到记录！！！</span></span><br><span class="line">db.inventory.find( &#123; <span class="string">'instock.qty'</span>: &#123; <span class="attr">$lte</span>: <span class="number">20</span> &#125; &#125; ) <span class="comment">//instock中存在一个元素的qty属性小于等于20的记录</span></span><br><span class="line">db.inventory.find( &#123; <span class="string">'instock.0.qty'</span>: &#123; <span class="attr">$lte</span>: <span class="number">20</span> &#125; &#125; ) <span class="comment">//instock中第一个元素的qty属性小于等于20的记录</span></span><br><span class="line">db.inventory.find( &#123; <span class="string">"instock"</span>: &#123; <span class="attr">$elemMatch</span>: &#123; <span class="attr">qty</span>: <span class="number">5</span>, <span class="attr">warehouse</span>: <span class="string">"A"</span> &#125; &#125; &#125; ) <span class="comment">//instock存在一个元素包含属性qty、warehouse，qty等于5并且warehouse是“A”的记录</span></span><br><span class="line">db.inventory.find( &#123; <span class="string">"instock"</span>: &#123; <span class="attr">$elemMatch</span>: &#123; <span class="attr">qty</span>: &#123; <span class="attr">$gt</span>: <span class="number">10</span>, <span class="attr">$lte</span>: <span class="number">20</span> &#125; &#125; &#125; &#125; ) <span class="comment">//instock存在一个元素包含qty，qty大于10并且小于等于20</span></span><br><span class="line">db.inventory.find( &#123; <span class="string">"instock.qty"</span>: &#123; <span class="attr">$gt</span>: <span class="number">10</span>,  <span class="attr">$lte</span>: <span class="number">20</span> &#125; &#125; ) <span class="comment">//instock中任意一个元素的qty属性大于10并且任意一个元素的属性小于等于20</span></span><br><span class="line">db.inventory.find( &#123; <span class="string">"instock.qty"</span>: <span class="number">5</span>, <span class="string">"instock.warehouse"</span>: <span class="string">"A"</span> &#125; ) <span class="comment">//instock中存在元素的qty属性等于5并且instock中存在元素的属性warehouse为‘A’</span></span><br></pre></td></tr></table></figure></p>
+<h6 id="文档查询-投影"><a href="#文档查询-投影" class="headerlink" title="文档查询 - 投影"></a>文档查询 - 投影</h6><p>初始化查询记录<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">db.inventory.insertMany( [</span><br><span class="line">  &#123; <span class="attr">item</span>: <span class="string">"journal"</span>, <span class="attr">status</span>: <span class="string">"A"</span>, <span class="attr">size</span>: &#123; <span class="attr">h</span>: <span class="number">14</span>, <span class="attr">w</span>: <span class="number">21</span>, <span class="attr">uom</span>: <span class="string">"cm"</span> &#125;, <span class="attr">instock</span>: [ &#123; <span class="attr">warehouse</span>: <span class="string">"A"</span>, <span class="attr">qty</span>: <span class="number">5</span> &#125; ] &#125;,</span><br><span class="line">  &#123; <span class="attr">item</span>: <span class="string">"notebook"</span>, <span class="attr">status</span>: <span class="string">"A"</span>,  <span class="attr">size</span>: &#123; <span class="attr">h</span>: <span class="number">8.5</span>, <span class="attr">w</span>: <span class="number">11</span>, <span class="attr">uom</span>: <span class="string">"in"</span> &#125;, <span class="attr">instock</span>: [ &#123; <span class="attr">warehouse</span>: <span class="string">"C"</span>, <span class="attr">qty</span>: <span class="number">5</span> &#125; ] &#125;,</span><br><span class="line">  &#123; <span class="attr">item</span>: <span class="string">"paper"</span>, <span class="attr">status</span>: <span class="string">"D"</span>, <span class="attr">size</span>: &#123; <span class="attr">h</span>: <span class="number">8.5</span>, <span class="attr">w</span>: <span class="number">11</span>, <span class="attr">uom</span>: <span class="string">"in"</span> &#125;, <span class="attr">instock</span>: [ &#123; <span class="attr">warehouse</span>: <span class="string">"A"</span>, <span class="attr">qty</span>: <span class="number">60</span> &#125; ] &#125;,</span><br><span class="line">  &#123; <span class="attr">item</span>: <span class="string">"planner"</span>, <span class="attr">status</span>: <span class="string">"D"</span>, <span class="attr">size</span>: &#123; <span class="attr">h</span>: <span class="number">22.85</span>, <span class="attr">w</span>: <span class="number">30</span>, <span class="attr">uom</span>: <span class="string">"cm"</span> &#125;, <span class="attr">instock</span>: [ &#123; <span class="attr">warehouse</span>: <span class="string">"A"</span>, <span class="attr">qty</span>: <span class="number">40</span> &#125; ] &#125;,</span><br><span class="line">  &#123; <span class="attr">item</span>: <span class="string">"postcard"</span>, <span class="attr">status</span>: <span class="string">"A"</span>, <span class="attr">size</span>: &#123; <span class="attr">h</span>: <span class="number">10</span>, <span class="attr">w</span>: <span class="number">15.25</span>, <span class="attr">uom</span>: <span class="string">"cm"</span> &#125;, <span class="attr">instock</span>: [ &#123; <span class="attr">warehouse</span>: <span class="string">"B"</span>, <span class="attr">qty</span>: <span class="number">15</span> &#125;, &#123; <span class="attr">warehouse</span>: <span class="string">"C"</span>, <span class="attr">qty</span>: <span class="number">35</span> &#125; ] &#125;</span><br><span class="line">]);</span><br></pre></td></tr></table></figure></p>
+<p>查询语句<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">db.inventory.find( &#123; <span class="attr">status</span>: <span class="string">"A"</span> &#125;, &#123; <span class="attr">item</span>: <span class="number">1</span>, <span class="attr">status</span>: <span class="number">1</span> &#125; ) <span class="comment">//status是“A”的记录，返回字段_id、item、status</span></span><br><span class="line">db.inventory.find( &#123; <span class="attr">status</span>: <span class="string">"A"</span> &#125;, &#123; <span class="attr">item</span>: <span class="number">1</span>, <span class="attr">status</span>: <span class="number">1</span>, <span class="attr">_id</span>: <span class="number">0</span> &#125; ) <span class="comment">//status是“A”的记录，返回字段item、status</span></span><br><span class="line">db.inventory.find( &#123; <span class="attr">status</span>: <span class="string">"A"</span> &#125;, &#123; <span class="attr">status</span>: <span class="number">0</span>, <span class="attr">instock</span>: <span class="number">0</span> &#125; ) <span class="comment">//status是“A”的记录，返回status、instock以外的所有字段</span></span><br><span class="line">db.inventory.find(</span><br><span class="line">   &#123; <span class="attr">status</span>: <span class="string">"A"</span> &#125;,</span><br><span class="line">   &#123; <span class="attr">item</span>: <span class="number">1</span>, <span class="attr">status</span>: <span class="number">1</span>, <span class="string">"size.uom"</span>: <span class="number">1</span> &#125;</span><br><span class="line">) <span class="comment">//status是“A”的纪录，返回字段_id、item、status、uom(size下面的属性)</span></span><br><span class="line">db.inventory.find(</span><br><span class="line">   &#123; <span class="attr">status</span>: <span class="string">"A"</span> &#125;,</span><br><span class="line">   &#123; <span class="string">"size.uom"</span>: <span class="number">0</span> &#125;</span><br><span class="line">) <span class="comment">//status是“A”的记录，返回uom(size下面的属性)以外的所有字段</span></span><br><span class="line">db.inventory.find( &#123; <span class="attr">status</span>: <span class="string">"A"</span> &#125;, &#123; <span class="attr">item</span>: <span class="number">1</span>, <span class="attr">status</span>: <span class="number">1</span>, <span class="string">"instock.qty"</span>: <span class="number">1</span> &#125; ) <span class="comment">//status是“A”的纪录，返回字段_id、item、status、qty(instock数组下面的元素的属性)</span></span><br><span class="line">db.inventory.find( &#123; <span class="attr">status</span>: <span class="string">"A"</span> &#125;, &#123; <span class="attr">item</span>: <span class="number">1</span>, <span class="attr">status</span>: <span class="number">1</span>, <span class="attr">instock</span>: &#123; <span class="attr">$slice</span>: <span class="number">-1</span> &#125; &#125; ) <span class="comment">//status是“A”的纪录，返回字段_id、item、status、instock数组下最后一条记录。数组投影只能使用$elemMatch、$slice、$。</span></span><br></pre></td></tr></table></figure></p>
+<h6 id="文档查询-空值"><a href="#文档查询-空值" class="headerlink" title="文档查询 - 空值"></a>文档查询 - 空值</h6><p>初始化查询记录<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">db.inventory.insertMany([</span><br><span class="line">   &#123; <span class="attr">_id</span>: <span class="number">1</span>, <span class="attr">item</span>: <span class="literal">null</span> &#125;,</span><br><span class="line">   &#123; <span class="attr">_id</span>: <span class="number">2</span> &#125;</span><br><span class="line">])</span><br></pre></td></tr></table></figure></p>
+<p>查询语句<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">db.inventory.find( &#123; <span class="attr">item</span>: <span class="literal">null</span> &#125; ) <span class="comment">//查询item为null或item不存在的记录</span></span><br><span class="line">db.inventory.find( &#123; <span class="attr">item</span> : &#123; <span class="attr">$type</span>: <span class="number">10</span> &#125; &#125; ) <span class="comment">//查询item为BSON null的记录</span></span><br><span class="line">db.inventory.find( &#123; <span class="attr">item</span> : &#123; <span class="attr">$exists</span>: <span class="literal">false</span> &#125; &#125; ) <span class="comment">//查询item不存在的记录</span></span><br></pre></td></tr></table></figure></p>
+<h6 id="文档更新"><a href="#文档更新" class="headerlink" title="文档更新"></a>文档更新</h6><p>初始化查询记录<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">db.inventory.insertMany( [</span><br><span class="line">   &#123; <span class="attr">item</span>: <span class="string">"canvas"</span>, <span class="attr">qty</span>: <span class="number">100</span>, <span class="attr">size</span>: &#123; <span class="attr">h</span>: <span class="number">28</span>, <span class="attr">w</span>: <span class="number">35.5</span>, <span class="attr">uom</span>: <span class="string">"cm"</span> &#125;, <span class="attr">status</span>: <span class="string">"A"</span> &#125;,</span><br><span class="line">   &#123; <span class="attr">item</span>: <span class="string">"journal"</span>, <span class="attr">qty</span>: <span class="number">25</span>, <span class="attr">size</span>: &#123; <span class="attr">h</span>: <span class="number">14</span>, <span class="attr">w</span>: <span class="number">21</span>, <span class="attr">uom</span>: <span class="string">"cm"</span> &#125;, <span class="attr">status</span>: <span class="string">"A"</span> &#125;,</span><br><span class="line">   &#123; <span class="attr">item</span>: <span class="string">"mat"</span>, <span class="attr">qty</span>: <span class="number">85</span>, <span class="attr">size</span>: &#123; <span class="attr">h</span>: <span class="number">27.9</span>, <span class="attr">w</span>: <span class="number">35.5</span>, <span class="attr">uom</span>: <span class="string">"cm"</span> &#125;, <span class="attr">status</span>: <span class="string">"A"</span> &#125;,</span><br><span class="line">   &#123; <span class="attr">item</span>: <span class="string">"mousepad"</span>, <span class="attr">qty</span>: <span class="number">25</span>, <span class="attr">size</span>: &#123; <span class="attr">h</span>: <span class="number">19</span>, <span class="attr">w</span>: <span class="number">22.85</span>, <span class="attr">uom</span>: <span class="string">"cm"</span> &#125;, <span class="attr">status</span>: <span class="string">"P"</span> &#125;,</span><br><span class="line">   &#123; <span class="attr">item</span>: <span class="string">"notebook"</span>, <span class="attr">qty</span>: <span class="number">50</span>, <span class="attr">size</span>: &#123; <span class="attr">h</span>: <span class="number">8.5</span>, <span class="attr">w</span>: <span class="number">11</span>, <span class="attr">uom</span>: <span class="string">"in"</span> &#125;, <span class="attr">status</span>: <span class="string">"P"</span> &#125;,</span><br><span class="line">   &#123; <span class="attr">item</span>: <span class="string">"paper"</span>, <span class="attr">qty</span>: <span class="number">100</span>, <span class="attr">size</span>: &#123; <span class="attr">h</span>: <span class="number">8.5</span>, <span class="attr">w</span>: <span class="number">11</span>, <span class="attr">uom</span>: <span class="string">"in"</span> &#125;, <span class="attr">status</span>: <span class="string">"D"</span> &#125;,</span><br><span class="line">   &#123; <span class="attr">item</span>: <span class="string">"planner"</span>, <span class="attr">qty</span>: <span class="number">75</span>, <span class="attr">size</span>: &#123; <span class="attr">h</span>: <span class="number">22.85</span>, <span class="attr">w</span>: <span class="number">30</span>, <span class="attr">uom</span>: <span class="string">"cm"</span> &#125;, <span class="attr">status</span>: <span class="string">"D"</span> &#125;,</span><br><span class="line">   &#123; <span class="attr">item</span>: <span class="string">"postcard"</span>, <span class="attr">qty</span>: <span class="number">45</span>, <span class="attr">size</span>: &#123; <span class="attr">h</span>: <span class="number">10</span>, <span class="attr">w</span>: <span class="number">15.25</span>, <span class="attr">uom</span>: <span class="string">"cm"</span> &#125;, <span class="attr">status</span>: <span class="string">"A"</span> &#125;,</span><br><span class="line">   &#123; <span class="attr">item</span>: <span class="string">"sketchbook"</span>, <span class="attr">qty</span>: <span class="number">80</span>, <span class="attr">size</span>: &#123; <span class="attr">h</span>: <span class="number">14</span>, <span class="attr">w</span>: <span class="number">21</span>, <span class="attr">uom</span>: <span class="string">"cm"</span> &#125;, <span class="attr">status</span>: <span class="string">"A"</span> &#125;,</span><br><span class="line">   &#123; <span class="attr">item</span>: <span class="string">"sketch pad"</span>, <span class="attr">qty</span>: <span class="number">95</span>, <span class="attr">size</span>: &#123; <span class="attr">h</span>: <span class="number">22.85</span>, <span class="attr">w</span>: <span class="number">30.5</span>, <span class="attr">uom</span>: <span class="string">"cm"</span> &#125;, <span class="attr">status</span>: <span class="string">"A"</span> &#125;</span><br><span class="line">] );</span><br></pre></td></tr></table></figure></p>
+<p>更新语句<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">db.inventory.updateOne(</span><br><span class="line">   &#123; <span class="attr">item</span>: <span class="string">"paper"</span> &#125;,</span><br><span class="line">   &#123;</span><br><span class="line">     $<span class="keyword">set</span>: &#123; <span class="string">"size.uom"</span>: <span class="string">"cm"</span>, <span class="attr">status</span>: <span class="string">"P"</span> &#125;,</span><br><span class="line">     $currentDate: &#123; <span class="attr">lastModified</span>: <span class="literal">true</span> &#125;</span><br><span class="line">   &#125;</span><br><span class="line">) <span class="comment">//更新item为“paper”的单条记录，$set更新对应字段值，$currentDate用于更新lastModified字段（不存在则创建）</span></span><br><span class="line">db.inventory.updateMany(</span><br><span class="line">   &#123; <span class="string">"qty"</span>: &#123; <span class="attr">$lt</span>: <span class="number">50</span> &#125; &#125;,</span><br><span class="line">   &#123;</span><br><span class="line">     $<span class="keyword">set</span>: &#123; <span class="string">"size.uom"</span>: <span class="string">"in"</span>, <span class="attr">status</span>: <span class="string">"P"</span> &#125;,</span><br><span class="line">     $currentDate: &#123; <span class="attr">lastModified</span>: <span class="literal">true</span> &#125;</span><br><span class="line">   &#125;</span><br><span class="line">) <span class="comment">//3.2开始支持，更新qty小于50的多条记录，$set更新对应字段值，$currentDate用于更新lastModified字段（不存在则创建）</span></span><br><span class="line">db.inventory.replaceOne(</span><br><span class="line">   &#123; <span class="attr">item</span>: <span class="string">"paper"</span> &#125;,</span><br><span class="line">   &#123; <span class="attr">item</span>: <span class="string">"paper"</span>, <span class="attr">instock</span>: [ &#123; <span class="attr">warehouse</span>: <span class="string">"A"</span>, <span class="attr">qty</span>: <span class="number">60</span> &#125;, &#123; <span class="attr">warehouse</span>: <span class="string">"B"</span>, <span class="attr">qty</span>: <span class="number">40</span> &#125; ] &#125;</span><br><span class="line">) <span class="comment">//用第二个文档对象替换item是“paper”的对象</span></span><br></pre></td></tr></table></figure></p>
+<h6 id="文档删除"><a href="#文档删除" class="headerlink" title="文档删除"></a>文档删除</h6><p>初始化查询记录<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">db.inventory.insertMany( [</span><br><span class="line">   &#123; <span class="attr">item</span>: <span class="string">"journal"</span>, <span class="attr">qty</span>: <span class="number">25</span>, <span class="attr">size</span>: &#123; <span class="attr">h</span>: <span class="number">14</span>, <span class="attr">w</span>: <span class="number">21</span>, <span class="attr">uom</span>: <span class="string">"cm"</span> &#125;, <span class="attr">status</span>: <span class="string">"A"</span> &#125;,</span><br><span class="line">   &#123; <span class="attr">item</span>: <span class="string">"notebook"</span>, <span class="attr">qty</span>: <span class="number">50</span>, <span class="attr">size</span>: &#123; <span class="attr">h</span>: <span class="number">8.5</span>, <span class="attr">w</span>: <span class="number">11</span>, <span class="attr">uom</span>: <span class="string">"in"</span> &#125;, <span class="attr">status</span>: <span class="string">"P"</span> &#125;,</span><br><span class="line">   &#123; <span class="attr">item</span>: <span class="string">"paper"</span>, <span class="attr">qty</span>: <span class="number">100</span>, <span class="attr">size</span>: &#123; <span class="attr">h</span>: <span class="number">8.5</span>, <span class="attr">w</span>: <span class="number">11</span>, <span class="attr">uom</span>: <span class="string">"in"</span> &#125;, <span class="attr">status</span>: <span class="string">"D"</span> &#125;,</span><br><span class="line">   &#123; <span class="attr">item</span>: <span class="string">"planner"</span>, <span class="attr">qty</span>: <span class="number">75</span>, <span class="attr">size</span>: &#123; <span class="attr">h</span>: <span class="number">22.85</span>, <span class="attr">w</span>: <span class="number">30</span>, <span class="attr">uom</span>: <span class="string">"cm"</span> &#125;, <span class="attr">status</span>: <span class="string">"D"</span> &#125;,</span><br><span class="line">   &#123; <span class="attr">item</span>: <span class="string">"postcard"</span>, <span class="attr">qty</span>: <span class="number">45</span>, <span class="attr">size</span>: &#123; <span class="attr">h</span>: <span class="number">10</span>, <span class="attr">w</span>: <span class="number">15.25</span>, <span class="attr">uom</span>: <span class="string">"cm"</span> &#125;, <span class="attr">status</span>: <span class="string">"A"</span> &#125;,</span><br><span class="line">] );</span><br></pre></td></tr></table></figure></p>
+<p>删除语句<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">db.inventory.deleteMany(&#123;&#125;) <span class="comment">//删除所有记录</span></span><br><span class="line">db.inventory.deleteMany(&#123; <span class="attr">status</span> : <span class="string">"A"</span> &#125;) <span class="comment">//删除status是“A”的多条记录</span></span><br><span class="line">db.inventory.deleteOne( &#123; <span class="attr">status</span>: <span class="string">"D"</span> &#125; ) <span class="comment">//删除status是“D”的第一条记录</span></span><br></pre></td></tr></table></figure></p>
+<h6 id="聚合-管道"><a href="#聚合-管道" class="headerlink" title="聚合 - 管道"></a>聚合 - 管道</h6><p>管道方式聚合时，多个聚合运算分布于管道上。每一步聚合运算完成后将结果交给下一步的聚合运算继续处理，以此类推。聚合运算的基本过程如下图所示。<br><img src="https://upload-images.jianshu.io/upload_images/1204278-0587ecfea73db6f0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="聚合运算示意"></p>
+<p>通过以上操作，我们看到可以通过Mongo Shell方便地对MongoDB进行日常维护操作。MongoDB的查询主要通过查询方法加上查询文档体来实现，这对于理解MongoDB第三方客户端的使用具有重要的指导意义。</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://xzoucn.github.io/2019/03/13/货币战争/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Shawn Zou">
+      <meta itemprop="description" content="软件技术小站">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ConstZ">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/03/13/货币战争/" class="post-title-link" itemprop="url">货币战争</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-03-13 17:39:06 / 修改时间：17:43:34" itemprop="dateCreated datePublished" datetime="2019-03-13T17:39:06+08:00">2019-03-13</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/杂文/" itemprop="url" rel="index"><span itemprop="name">杂文</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p> 终于看完了这书，作者全篇的议论与观察面相当独到，可能很多人都不会去以这样的角度来思索这个金融无处不在的世界。</p>
+<p>这本书论述的时间跨度达到两百年之久，很多的事件看起来如同小说一般引人入胜。虽然很多是从历史表象来进行推论，但可以看到这些推论所要回答的问题本身就充满谜团，所以也不失其作为真实答案的可能性。</p>
+<p>虽然不是所有的银行家都如此阴险，但只要银行家是个人，那么对于利益的追求恐怕就是难以避免的，加之其所从事的行业本身就一直在做着这样的事。银行如何获取收益，就是放贷。即便这种放贷形势可谓是五花八门，但最根本的就是放贷，获取利息收入。所以如果没有贷款需要，银行自然也就会没落。银行家自然不甘只做小生意，要玩就玩大的，而债务货币，也就是现代货币给他们提供了这种可能性。原因很简单，纸币制造相当之廉价，没有金银那样的开采难度。制造的廉价性恰恰是恶性通胀的罪魁祸首。通胀会使财富向少数人迅速集中，而这少数人自然毫无悬念就是拥有货币发行权的人了。</p>
+<p>战争以及各种现象的背后是对银本位和金本位的相继抹杀，大力推举债务货币，最终受苦的自然是数量庞大的普通百姓了。那么百姓如何与如此强大的对手抗争来获得自己应有的权利呢，从本质出发，作者给出了答案，那就是恢复金银本位制。这样才能逃过国际银行家们对全球的残酷剥削，人民才有财产自由，才有话语权。究其原因，金银的开采并非如同债务货币般想印多少就印多少，所以国际银行家门想从这上来制造吸血通道的难度相对要大得多。</p>
+<p>我很欣赏作者的审视观点，让我了解到了一些现象的内因。但同时对于结论，我以为恢复金银本位恐怕很困难，毕竟人们的生产力由于工业化比过去大大提高，如果用金银来做货币，那流通起来就相当不方便了。加之其实紧缩与通胀依然存在，就看劳动成果总量与金银熟多熟少了。相反如果能运用合理的策略来引导货币健康稳定地发展，那真是两全齐美之事，但这需要所有货币发行者有着强有力的信誉与自我约束能力，这应该算得上是一个不小的挑战了。</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://xzoucn.github.io/2019/03/13/凤凰项目笔记/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Shawn Zou">
+      <meta itemprop="description" content="软件技术小站">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ConstZ">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/03/13/凤凰项目笔记/" class="post-title-link" itemprop="url">凤凰项目笔记</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-03-13 17:37:53 / 修改时间：17:44:13" itemprop="dateCreated datePublished" datetime="2019-03-13T17:37:53+08:00">2019-03-13</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/项目管理/" itemprop="url" rel="index"><span itemprop="name">项目管理</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>凤凰项目是关于一家汽车零部件生产商，在IT转型阵痛期所发生的一系列故事。我们能够看到当IT几近失败边缘之时，主人公比尔是如何一步步扭转战局，帮助公司摆脱困境的。具体故事建议感兴趣的可以去浏览下这本书，比尔所使用的方法论可以简要归纳如下：</p>
+<p>##三步工作法</p>
+<p>###一、建立正向工作流程<br>正向工作流需要是单向及高效的，需要找到约束点，通过各种手段放大约束点的能力。通过小批量处理的方式减少半成品的积压，降低流程中缺陷流向下游的可能性，持续改进，提高效率。</p>
+<p>###一、建立持续反馈工作流程<br>反向工作流程往往是影响正常工作流程效率的诱因，因此需要给予足够多的关注。我们需要着眼于减少反向流程发生率，同时需要通过一些手段对反向流程进行优化，以降低反向流程的代价，减少其对正常流程的影响，降低风险，提高工作流程健康度。</p>
+<p>###一、建立不断尝试和训练的企业文化<br>营造勇于创新、敢于冒险、高信任度的文化。将至少20%的时间分配给非功能性需求，并不断鼓励进行改进。</p>
+<p>##四种工作类型<br>从IT运维的角度看，工作类型大体可以分为如下四种:</p>
+<p>###一、业务项目<br>业务项目即公司最常见的业务举措，一般归属于项目管理办公室。它所反映的是公司最直接的业务需要。</p>
+<p>###二、IT内部项目<br>IT内部项目通常指除了业务项目外，自行发起的一些项目。可能是由业务项目衍生出的基础架构及运维改进等等。它所反映的是IT内部对于正常推进业务项目的附属需要。</p>
+<p>###三、变更<br>通常由业务项目或IT内部项目引发。一切对系统正常运行可能造成影响的动作均可以认为是变更，一般常见的变更如业务系统升级、硬件维护、安全加固等等。它所反映的是系统不断演进发展以及维持系统正常运行的需要。</p>
+<p>###四、计划外工作<br>未列入计划的工作，例如故障或事故，通常由前三点所产生。计计划外工作不会产生收益，且会对正常工作产生副作用。它所反映的是工作中的非可预见区以及混乱点，我们需要警惕计划外工作产生的负面影响。</p>
+<p>##其他</p>
+<p>###可视化管理<br>通过可视化的手段来监测工作过程中的各个状态，如利用看板进行工作项的管理。可视化管理可以让我们能够直观地了解项目情况，对项目的健康情况进行检查，在必要时进行干预。</p>
+<p>###等待时间</p>
+<blockquote>
+<p>等待时间=忙碌百分比/空闲百分比</p>
+</blockquote>
+<p>当忙碌百分比超过80%时，等待时间将发生迅速增长。因此我们需要对忙碌百分比较高的资源提高关注，特别是有关资源是否是工作流中的关键约束点。</p>
+<p>###开发运维的价值<br>开发运维通过自动化、小批量、高频率的手段提高了IT从开发到生产环境流程的响应效率。通过流程整合，减少了整合前流程中各个步骤出现问题的可能性。这样，系统变得更易于改动及可靠，重大风险因被分散而更为可控。企业能够快速响应用户需求，并通过短的交付周期快速得到投资收益。</p>
+<p>##思考</p>
+<ul>
+<li>工作并不是越忙碌越好，忙碌同时也意味着等待队列变长，工作流程随时可能崩溃。</li>
+<li>流程是用来保护人员，提高效率的工具。</li>
+<li>必要时冻结次要任务，专注于减少主要任务的半成品。改进流程，提高效率后，再考虑按照重要程度逐步放开其它任务。</li>
+<li>永远关注于和核心目标相关的任务，减少无关任务的干扰。</li>
+</ul>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://xzoucn.github.io/2019/03/13/批量修改文件名/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Shawn Zou">
+      <meta itemprop="description" content="软件技术小站">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ConstZ">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/03/13/批量修改文件名/" class="post-title-link" itemprop="url">批量修改文件名</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-03-13 17:35:33 / 修改时间：17:36:05" itemprop="dateCreated datePublished" datetime="2019-03-13T17:35:33+08:00">2019-03-13</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/VB/" itemprop="url" rel="index"><span itemprop="name">VB</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>闲来无事，正好需要批量修改一些文件的名字。<br>一个简单的实现如下：</p>
+<blockquote>
+<p>set objfso=createobject(“scripting.filesystemobject”)<br>set objfiles=objfso.getfolder(“.”).files<br>     for each objfile in objfiles<br> &nbsp;&nbsp;&nbsp;&nbsp;newname = replace(objfile.name,”[APTX4869]”,””)<br> &nbsp;&nbsp;if objfile.name &lt;&gt; newname then<br> &nbsp;&nbsp;&nbsp;&nbsp;objfile.name = newname<br> &nbsp;&nbsp;end if<br>next<br>set objfiles=nothing<br>set objfso=nothing</p>
+</blockquote>
+<p>橙色部分根据自己的修改规则进行替换。在记事本中另存为vbs，拷贝到相应目录下执行即可。</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://xzoucn.github.io/2019/03/13/CSS透明度设置/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Shawn Zou">
+      <meta itemprop="description" content="软件技术小站">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ConstZ">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/03/13/CSS透明度设置/" class="post-title-link" itemprop="url">CSS透明度设置</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-03-13 17:31:30 / 修改时间：17:48:19" itemprop="dateCreated datePublished" datetime="2019-03-13T17:31:30+08:00">2019-03-13</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/CSS/" itemprop="url" rel="index"><span itemprop="name">CSS</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <blockquote>
+<p>.transparent_class {<br>&nbsp; &nbsp;&nbsp; &nbsp;filter:alpha(opacity=50);<br>&nbsp; &nbsp;&nbsp; &nbsp;-moz-opacity:0.5;<br>&nbsp; &nbsp;&nbsp; &nbsp;-khtml-opacity: 0.5;<br>&nbsp; &nbsp;&nbsp; &nbsp;opacity: 0.5;<br>}  </p>
+</blockquote>
+<p>opacity: 0.5; 当前的标准属性 . 大部分版本的Firefox, Safari 和 Opera都可以使用。<br>filter:alpha(opacity=50); 适用于IE。<br>-moz-opacity:0.5; 适用于老版本的Mozilla 浏览器如Netscape Navigator。<br>-khtml-opacity: 0.5; 适用于老版本的 Safari (1.x)，它采用KTHML而不是WebKit。</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://xzoucn.github.io/2019/03/13/collate的用处/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -607,7 +1638,7 @@
                 
               
 
-              <time title="创建时间：2019-03-13 10:07:53 / 修改时间：13:05:41" itemprop="dateCreated datePublished" datetime="2019-03-13T10:07:53+08:00">2019-03-13</time>
+              <time title="创建时间：2019-03-13 10:07:53 / 修改时间：17:44:53" itemprop="dateCreated datePublished" datetime="2019-03-13T10:07:53+08:00">2019-03-13</time>
             
 
             
@@ -629,7 +1660,7 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/SQL/" itemprop="url" rel="index"><span itemprop="name">SQL</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/数据库/" itemprop="url" rel="index"><span itemprop="name">数据库</span></a></span>
 
                 
                 
@@ -1084,372 +2115,13 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://xzoucn.github.io/2019/03/13/配置Windows-Apache-Mysql-PHP开发运行环境/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Shawn Zou">
-      <meta itemprop="description" content="软件技术小站">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="ConstZ">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/03/13/配置Windows-Apache-Mysql-PHP开发运行环境/" class="post-title-link" itemprop="url">配置Windows+Apache+Mysql+PHP开发运行环境</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2019-03-13 09:43:49 / 修改时间：13:22:26" itemprop="dateCreated datePublished" datetime="2019-03-13T09:43:49+08:00">2019-03-13</time>
-            
-
-            
-              
-
-              
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/PHP/" itemprop="url" rel="index"><span itemprop="name">PHP</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p><strong>安装Apache</strong></p>
-<ol>
-<li>获取<strong><em>Apache Server</em></strong> <a href="http://mirror.bjtu.edu.cn/apache//httpd/binaries/win32/httpd-2.2.17-win32-x86-openssl-0.9.8o.msi" target="_blank" rel="noopener">下载</a>。</li>
-<li>这个是包括了open ssl 模块的window可执行程序，直接运行安装到我们需要放置的目录下面。注意使用80端口，这样不必额外制定端口号就可以访问本地Http Server了。</li>
-<li>一切安装好后，打开浏览器，输入<a href="http://localhost进行测试，出现“It" target="_blank" rel="noopener">http://localhost进行测试，出现“It</a> Works”那么安装就成功了。</li>
-</ol>
-<p><strong>安装Mysql</strong></p>
-<ol>
-<li>获取 <strong><em>Mysql</em></strong><a href="http://www.mysql.com/downloads/mirror.php?id=397271#mirrors" target="_blank" rel="noopener">下载</a>。</li>
-<li>安装 Mysql，这个是打包好了的安装包，一路根据提示安装上即可。</li>
-<li>另外还有一个Mysql Workbench，这个是一个可视化的Mysql管理软件，可以一同下下来或者选用别的顺手的管理客户端均可。</li>
-<li>用管理客户端链接本地的Mysql，能连接上说明安装成功。</li>
-</ol>
-<p><strong>安装PHP</strong></p>
-<ol>
-<li>获取 <strong>PHP </strong><a href="http://windows.php.net/download/" target="_blank" rel="noopener">下载</a>。可以看到多个版本供我们选择：<blockquote>
-<ul>
-<li>如果Apache的版本是1或2，那么下载VC6编译的版本</li>
-<li>如果选用IIS作为Server，那么使用VC9编译的版本</li>
-<li>X86代表32位的操作系统，X64则代表64位操作系统</li>
-<li>Thread Safe和Non Thread Safe,取决于Web Server对PHP的执行方式。如果是ISAPI,需要调用dll来处理用户请求，由于处理完后相关dll不会马上消失，所以需要进行线程安全检查以使用多线程，从而提高效率，使用Thread Safe较好。如果是Fast CGI,由于只进行单线程的运行，因此没必要进行线程并发下的安全性检查，去掉线程安全检查等于取消不必要的系统耗费从而提高运行速度，使用 Non Thread Safe的较好。</li>
-</ul>
-</blockquote>
-</li>
-</ol>
-<p>这里也有直接的安装包，直接安装即可，但我们选择ZIP包进行手工安装，一来手工安装更灵活，二来可以了解PHP的内部结构，这个对于以后进一步使用PHP来说比较重要哦。</p>
-<ol start="2">
-<li>将压缩包解压到你的目标磁盘目录，如解压后的目录类似C:\php，注意目录间最好不用空格，由于有的Web Server可能不支持带空格的路径。</li>
-<li>配置php5ts.dll路劲的环境变量。在根目录下面有些dll含有Web Server的名字，这些相关的Server模块可以让Web Server运行PHP时更加高效。所有的模块都需要用到php5ts.dll，因此需要让系统知道他的位置，查找顺序一般为：<blockquote>
-<ul>
-<li>php.exe的执行位置，或者Web Server的执行目录（一般为bin）如果Web Server使用了server模块。</li>
-<li>环境变量PATH下包含的路径。</li>
-</ul>
-</blockquote>
-</li>
-<li>把当前的根目录加到PATH下，这样无论Web Server如何配置，系统都可以寻找到php5ts.dll</li>
-<li>配置PHP初始化信息，直接把php.ini-production复制后改名为php.ini即可，PHP运行时会自动查找并读取php.ini文件。另外如果使用Windows NT, 2000, XP 或 2003上的NTFS格式，确保运行Web Server的用户对php.ini有读取的权限。</li>
-<li>关联PHP和Apache,此配置后Apache便具有PHP的解析能力。这里有两种方式去设置PHP与Apache的协同工作。一种是作为CGI，另一种是作为Apache的模块来安装，上面提到Server模块更好，因此我采用这种方式安装，将以下三行加入Apache的httpd.conf中即可。<blockquote>
-<p>LoadModule php5_module “c:/php/php5apache2_2.dll”<br>AddType application/x-httpd-php .php<br>PHPIniDir “C:/php”</p>
-</blockquote>
-</li>
-</ol>
-<p><strong>集成检测</strong></p>
-<p> 最后来检查下我们的环境是否正常工作。</p>
-<ol>
-<li>新建一个文本名称加扩展名为test.ini。</li>
-<li>在文件中添加如下代码：</li>
-</ol>
-<blockquote>
-<p>&lt;?php<br>phpinfo();<br>?&gt;</p>
-</blockquote>
-<ol start="3">
-<li>将其放到Apache Server的htdocs目录下。</li>
-<li>接着在浏览器中输入<a href="http://localhost/test.php,如果出现了PHP的版本及组件相关统计信息，说明正常工作了。其中mysqlnd为enable说明Mysql的驱动也正常启用了。" target="_blank" rel="noopener">http://localhost/test.php,如果出现了PHP的版本及组件相关统计信息，说明正常工作了。其中mysqlnd为enable说明Mysql的驱动也正常启用了。</a></li>
-</ol>
-<p>这样一个WAMP环境就搭建起来了，这个环境是进行开发与学习的基础，就先介绍到这里了。</p>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://xzoucn.github.io/2019/03/12/hello-world/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Shawn Zou">
-      <meta itemprop="description" content="软件技术小站">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="ConstZ">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/03/12/hello-world/" class="post-title-link" itemprop="url">Hello World</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2019-03-12 22:31:31" itemprop="dateCreated datePublished" datetime="2019-03-12T22:31:31+08:00">2019-03-12</time>
-            
-
-            
-          </span>
-
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
+  <nav class="pagination">
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+  </nav>
+
 
 
           </div>
@@ -1489,7 +2161,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">6</span>
+                    <span class="site-state-item-count">12</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -1510,7 +2182,17 @@
                     
                       
                     
-                    <span class="site-state-item-count">2</span>
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">7</span>
                     <span class="site-state-item-name">分类</span>
                   </a>
                 </div>
@@ -1531,7 +2213,17 @@
                     
                       
                     
-                    <span class="site-state-item-count">2</span>
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">7</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
