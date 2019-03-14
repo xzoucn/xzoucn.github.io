@@ -106,12 +106,12 @@
 <meta property="og:site_name" content="ConstZ">
 <meta property="og:description" content="Mongo Shell提供了交互式的MongoDB操作体验，通过Mongo Shell我们可以方便地进行查询验证及学习。本篇我们将通过Mongo Shell来进行MongoDB基本操作介绍。 文档插入12345678db.inventory.insertOne(   &amp;#123; item: &quot;canvas&quot;, qty: 100, tags: [&quot;cotton&quot;], size: &amp;#123; h:">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/1204278-0587ecfea73db6f0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2019-03-13T09:43:03.251Z">
+<meta property="og:image" content="https://xzoucn.github.io/2019/03/13/MongoDB基本操作-Mongo-Shell/aggregate.png">
+<meta property="og:updated_time" content="2019-03-14T05:50:15.254Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="MongoDB基本操作 - Mongo Shell">
 <meta name="twitter:description" content="Mongo Shell提供了交互式的MongoDB操作体验，通过Mongo Shell我们可以方便地进行查询验证及学习。本篇我们将通过Mongo Shell来进行MongoDB基本操作介绍。 文档插入12345678db.inventory.insertOne(   &amp;#123; item: &quot;canvas&quot;, qty: 100, tags: [&quot;cotton&quot;], size: &amp;#123; h:">
-<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/1204278-0587ecfea73db6f0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta name="twitter:image" content="https://xzoucn.github.io/2019/03/13/MongoDB基本操作-Mongo-Shell/aggregate.png">
 
 
 
@@ -437,12 +437,24 @@
                 
               
 
-              <time title="创建时间：2019-03-13 17:42:07 / 修改时间：17:43:03" itemprop="dateCreated datePublished" datetime="2019-03-13T17:42:07+08:00">2019-03-13</time>
+              <time title="创建时间：2019-03-13 17:42:07" itemprop="dateCreated datePublished" datetime="2019-03-13T17:42:07+08:00">2019-03-13</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-03-14 13:50:15" itemprop="dateModified" datetime="2019-03-14T13:50:15+08:00">2019-03-14</time>
               
             
           </span>
@@ -523,7 +535,7 @@
 <p>更新语句<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">db.inventory.updateOne(</span><br><span class="line">   &#123; <span class="attr">item</span>: <span class="string">"paper"</span> &#125;,</span><br><span class="line">   &#123;</span><br><span class="line">     $<span class="keyword">set</span>: &#123; <span class="string">"size.uom"</span>: <span class="string">"cm"</span>, <span class="attr">status</span>: <span class="string">"P"</span> &#125;,</span><br><span class="line">     $currentDate: &#123; <span class="attr">lastModified</span>: <span class="literal">true</span> &#125;</span><br><span class="line">   &#125;</span><br><span class="line">) <span class="comment">//更新item为“paper”的单条记录，$set更新对应字段值，$currentDate用于更新lastModified字段（不存在则创建）</span></span><br><span class="line">db.inventory.updateMany(</span><br><span class="line">   &#123; <span class="string">"qty"</span>: &#123; <span class="attr">$lt</span>: <span class="number">50</span> &#125; &#125;,</span><br><span class="line">   &#123;</span><br><span class="line">     $<span class="keyword">set</span>: &#123; <span class="string">"size.uom"</span>: <span class="string">"in"</span>, <span class="attr">status</span>: <span class="string">"P"</span> &#125;,</span><br><span class="line">     $currentDate: &#123; <span class="attr">lastModified</span>: <span class="literal">true</span> &#125;</span><br><span class="line">   &#125;</span><br><span class="line">) <span class="comment">//3.2开始支持，更新qty小于50的多条记录，$set更新对应字段值，$currentDate用于更新lastModified字段（不存在则创建）</span></span><br><span class="line">db.inventory.replaceOne(</span><br><span class="line">   &#123; <span class="attr">item</span>: <span class="string">"paper"</span> &#125;,</span><br><span class="line">   &#123; <span class="attr">item</span>: <span class="string">"paper"</span>, <span class="attr">instock</span>: [ &#123; <span class="attr">warehouse</span>: <span class="string">"A"</span>, <span class="attr">qty</span>: <span class="number">60</span> &#125;, &#123; <span class="attr">warehouse</span>: <span class="string">"B"</span>, <span class="attr">qty</span>: <span class="number">40</span> &#125; ] &#125;</span><br><span class="line">) <span class="comment">//用第二个文档对象替换item是“paper”的对象</span></span><br></pre></td></tr></table></figure></p>
 <h6 id="文档删除"><a href="#文档删除" class="headerlink" title="文档删除"></a>文档删除</h6><p>初始化查询记录<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">db.inventory.insertMany( [</span><br><span class="line">   &#123; <span class="attr">item</span>: <span class="string">"journal"</span>, <span class="attr">qty</span>: <span class="number">25</span>, <span class="attr">size</span>: &#123; <span class="attr">h</span>: <span class="number">14</span>, <span class="attr">w</span>: <span class="number">21</span>, <span class="attr">uom</span>: <span class="string">"cm"</span> &#125;, <span class="attr">status</span>: <span class="string">"A"</span> &#125;,</span><br><span class="line">   &#123; <span class="attr">item</span>: <span class="string">"notebook"</span>, <span class="attr">qty</span>: <span class="number">50</span>, <span class="attr">size</span>: &#123; <span class="attr">h</span>: <span class="number">8.5</span>, <span class="attr">w</span>: <span class="number">11</span>, <span class="attr">uom</span>: <span class="string">"in"</span> &#125;, <span class="attr">status</span>: <span class="string">"P"</span> &#125;,</span><br><span class="line">   &#123; <span class="attr">item</span>: <span class="string">"paper"</span>, <span class="attr">qty</span>: <span class="number">100</span>, <span class="attr">size</span>: &#123; <span class="attr">h</span>: <span class="number">8.5</span>, <span class="attr">w</span>: <span class="number">11</span>, <span class="attr">uom</span>: <span class="string">"in"</span> &#125;, <span class="attr">status</span>: <span class="string">"D"</span> &#125;,</span><br><span class="line">   &#123; <span class="attr">item</span>: <span class="string">"planner"</span>, <span class="attr">qty</span>: <span class="number">75</span>, <span class="attr">size</span>: &#123; <span class="attr">h</span>: <span class="number">22.85</span>, <span class="attr">w</span>: <span class="number">30</span>, <span class="attr">uom</span>: <span class="string">"cm"</span> &#125;, <span class="attr">status</span>: <span class="string">"D"</span> &#125;,</span><br><span class="line">   &#123; <span class="attr">item</span>: <span class="string">"postcard"</span>, <span class="attr">qty</span>: <span class="number">45</span>, <span class="attr">size</span>: &#123; <span class="attr">h</span>: <span class="number">10</span>, <span class="attr">w</span>: <span class="number">15.25</span>, <span class="attr">uom</span>: <span class="string">"cm"</span> &#125;, <span class="attr">status</span>: <span class="string">"A"</span> &#125;,</span><br><span class="line">] );</span><br></pre></td></tr></table></figure></p>
 <p>删除语句<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">db.inventory.deleteMany(&#123;&#125;) <span class="comment">//删除所有记录</span></span><br><span class="line">db.inventory.deleteMany(&#123; <span class="attr">status</span> : <span class="string">"A"</span> &#125;) <span class="comment">//删除status是“A”的多条记录</span></span><br><span class="line">db.inventory.deleteOne( &#123; <span class="attr">status</span>: <span class="string">"D"</span> &#125; ) <span class="comment">//删除status是“D”的第一条记录</span></span><br></pre></td></tr></table></figure></p>
-<h6 id="聚合-管道"><a href="#聚合-管道" class="headerlink" title="聚合 - 管道"></a>聚合 - 管道</h6><p>管道方式聚合时，多个聚合运算分布于管道上。每一步聚合运算完成后将结果交给下一步的聚合运算继续处理，以此类推。聚合运算的基本过程如下图所示。<br><img src="https://upload-images.jianshu.io/upload_images/1204278-0587ecfea73db6f0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="聚合运算示意"></p>
+<h6 id="聚合-管道"><a href="#聚合-管道" class="headerlink" title="聚合 - 管道"></a>聚合 - 管道</h6><p>管道方式聚合时，多个聚合运算分布于管道上。每一步聚合运算完成后将结果交给下一步的聚合运算继续处理，以此类推。聚合运算的基本过程如下图所示。<br><img src="/2019/03/13/MongoDB基本操作-Mongo-Shell/aggregate.png" alt="聚合运算示意"></p>
 <p>通过以上操作，我们看到可以通过Mongo Shell方便地对MongoDB进行日常维护操作。MongoDB的查询主要通过查询方法加上查询文档体来实现，这对于理解MongoDB第三方客户端的使用具有重要的指导意义。</p>
 
       
@@ -734,7 +746,7 @@
                   
                     
                   
-                  <a href="https://github.com/xzoucn" title="GitHub &rarr; https://github.com/xzoucn" rel="noopener" target="_blank"><i class="fa fa-fw fa-globe"></i>GitHub</a>
+                  <a href="https://github.com/xzoucn" title="GitHub &rarr; https://github.com/xzoucn" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
                 </span>
               
             </div>
